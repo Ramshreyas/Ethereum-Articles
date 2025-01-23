@@ -1,3 +1,8 @@
+---
+layout: default
+title: RISC-V Business Part 1
+author: Ramshreyas Rao
+---
 # RISC-V Business: Part 1
 
 !["RISC-V Business"](https://szmer.info/pictrs/image/6313c4e4-5b15-41ee-afa8-a7765cda4893.png)
@@ -6,7 +11,7 @@ Angelina Jolie in Hackers, 1995
 
 It's almost 2025, and the great RISC revolution that has been looming for decades is finally threatening to materialize. The Ethereum Foundation is [funding a formal verification effort for RISC-V ZKVMs](https://verified-zkevm.org/), chip industry legends like [Jim Keller](https://en.wikipedia.org/wiki/Jim_Keller_(engineer)) are starting RISC-V-driven technology efforts like [tenstorrent](https://tenstorrent.com/en/vision/tenstorrent-risc-v-and-chiplet-technology-selected-to-build-the-future-of-ai-in-japan), RISC-V International (the governing body for the RISC-V standard) has [ratified the RISC-V specifications](https://riscv.org/announcements/2024/04/risc-v-international-achieves-milestone-with-ratification-of-40-specifications-in-two-years/), laying the ground for an open standard that industry can now build upon, and Justin Drake in his ambitious [Beam Chain proposal](https://youtu.be/lRqnFrqpq4k) outlined how the onset of RISC-V can massively accelerate Ethereum's ponderous roadmap dramatically on many fronts.
 
-This article aims to introduce RISC-V, motivate its importance to the Ethereum vision, and, with a few toy code examples, connect the dots across the entire tech stack from high level code down to assembly.
+This article aims to introduce RISC-V, motivate its importance to the Ethereum vision, and then introduce RISC-V zkVMs with a toy example of coding in this setting.
 
 ---
 
@@ -38,7 +43,7 @@ State in Ethereum is currently stored in a (Merkle Patricia) tree structure, and
 
 >"...you should be able to verify an Ethereum block by (i) downloading the block, or perhaps even only small parts of the block with data availability sampling, and (ii) verifying a small proof that the block is valid... Getting to this point requires having SNARK or STARK proofs of (i) the consensus layer (ie. the proof of stake), and (ii) the execution layer (ie. the EVM)... Today, validity proofs for the EVM are inadequate in two dimensions: security and prover time."
 
-The time taken to prove a block with sufficiently 'weak' hardware is an essential component of The Verge - software run by solo home stakers, or even users with a smartwatch for that matter, needs to be sufficiently fast enough so that an "Ethereum block can be proven in less than ~4 seconds.".
+Reducing the time taken to prove a block with sufficiently 'weak' hardware is an essential criteria for The Verge - software run by solo home stakers, or even users with a smartwatch for that matter, needs to be sufficiently fast enough so that an "Ethereum block can be proven in less than ~4 seconds.".
 
 >"If we want it to be possible to fully verify an Ethereum block with a SNARK, then the EVM execution is not the only part we need to prove. We also need to prove the consensus: the part of the system that handles deposits, withdrawals, signatures, validator balance updates, and other elements of the proof-of-stake part of Ethereum."
 
@@ -48,13 +53,13 @@ The main takeaway is this: the future of Ethereum is ZK (or PM, really, as we wi
 
 ---
 
-### 2. Programmable Cryptography and the rise of 'Glue and Co-processor' architectures
+### 2. Programmable Cryptography and the rise of 'Glue and Coprocessor' architectures
 
 **2.1 Programmable Cryptography**
 
-<img src="https://0xparc.org/static/pc_tech_tree.png" alt="PM" style="width:50%;">
+![PC Tech tree](https://0xparc.org/static/pc_tech_tree.png)
 
-*[Diagram from 'Programmable Crypotgraphy (Part 1)](https://0xparc.org/blog/programmable-cryptography-1)*
+*[Diagram from 'Programmable Cryptography (Part 1)](https://0xparc.org/blog/programmable-cryptography-1)*
 
 As introduced in a series of posts on [Programmable cryptography](https://0xparc.org/blog/programmable-cryptography-1) by [gubsheep](https://x.com/gubsheep):
 
@@ -66,7 +71,7 @@ This means we now have the capacity to perform any computation our little hearts
 
 **2.2 The rise of Glue and Coprocessor architectures**
 
-<img src="https://vitalik.eth.limo/images/gluecp/BJdoaxqo0.png" alt="Glue and Coprocessors" style="width:25%;">
+![Glue and Coprocessor](https://vitalik.eth.limo/images/gluecp/BJdoaxqo0.png)
 
 *[Diagram from 'Glue and coprocessor architectures'](https://vitalik.eth.limo/images/gluecp/BJdoaxqo0.png)*
 
@@ -86,7 +91,7 @@ The solution? Create specialized low-level modules for all the expensive operati
 
 **2.3 zkEVMs**
 
-<img src="https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F80d2ba52-e0eb-4864-9603-a53e69a49dcc%2Fa54c7c60-f729-4c36-921c-29cb07ea8b27%2F1_(1).png?table=block&id=5aeb1325-0fa7-4865-930a-9a2592330e41&cache=v2" alt="zkEVM" style="width:50%;">
+![zkEVMs](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F80d2ba52-e0eb-4864-9603-a53e69a49dcc%2Fa54c7c60-f729-4c36-921c-29cb07ea8b27%2F1_(1).png?table=block&id=5aeb1325-0fa7-4865-930a-9a2592330e41&cache=v2)
 
 [From risc0's blog - Desiging High-performance zkVMs](https://risczero.com/blog/designing-high-performance-zkVMs)
 
@@ -98,7 +103,7 @@ In August 2023, [Risc0 released Zeth, a ZK execution layer block prover for Ethe
 - Paying the block reward.
 - Updating the state root.
 
-There are actually multiple types of zkEVMs, occupying different parts of the trade-off space between full Ethereum compatibility and proving speed:
+There are actually [multiple types of zkEVMs](https://vitalik.eth.limo/general/2022/08/04/zkevm.html), occupying different parts of the trade-off space between full Ethereum compatibility and proving speed:
 
 - Type 1: Fully Ethereum-compatible, inheriting all of Ethereum's infrastructure and security, but with longer prover times (the time it takes to generate zk-proofs).
 - Type 2: Fully EVM-equivalent, striking a balance between compatibility and prover times.
@@ -122,7 +127,7 @@ RISC-V is a free and open source Instruction Set Architecture (ISA). It is an op
 
 **3.2 RISC-V is modular and extendable**
 
-RISC-V has been expressly designed to make it easier to add these 'extentions' to the ISA, and its licensing as well as the community posture welcome such extentions. This is in stark contrast to its primary competitor ARM (itself a RISK ISA), which is expensive, closed-source and prohibitively licensed, as evidenced by the [Qualcomm-ARM Nuvia Lawsuit](https://www.forbes.com/sites/patrickmoorhead/2024/11/07/qualcomm-and-arm-trade-jabs-ahead-of-december-court-case/). The whole glue and coprocessor approach requires custom extentions at a low level, and of all competing architectures such as x86, AMD, ARM and more, RISC-V is by far the most open and permissive architecture to target. Furthermore, this modular
+RISC-V has been expressly designed to make it easier to add these 'extentions' to the ISA, and its licensing as well as the community posture welcome such extentions. This is in stark contrast to its primary competitor ARM (itself a RISC ISA), which is expensive, closed-source and prohibitively licensed, as evidenced by the [Qualcomm-ARM Nuvia Lawsuit](https://www.forbes.com/sites/patrickmoorhead/2024/11/07/qualcomm-and-arm-trade-jabs-ahead-of-december-court-case/). The whole glue and coprocessor approach requires custom extentions at a low level, and of all competing architectures such as x86, AMD, ARM and more, RISC-V is by far the most open and permissive architecture to target.
 
 **3.3. RISC-V is growing**
 
@@ -136,8 +141,8 @@ The simplicity of RISC, which stands for *Reduced* Instruction Set Architecture,
 
 Comparing RISC-V to MIPS, WASM, and custom architectures reveals its strengths and weaknesses in the context of zkEVM development:
 
-- RISC-V vs. MIPS: Both RISC-V and MIPS are RISC ISAs with mature ecosystems. However, RISC-V's open-source nature and growing community give it an edge in terms of flexibility, innovation, and accessibility1.
-- RISC-V vs. WASM: WASM's portability and web compatibility make it attractive for certain use cases. However, RISC-V's focus on performance and efficiency might be more suitable for the computationally intensive nature of zkEVM proof generation2.
+- RISC-V vs. MIPS: Both RISC-V and MIPS are RISC ISAs with mature ecosystems. However, RISC-V's open-source nature and growing community give it an edge in terms of flexibility, innovation, and accessibility.
+- RISC-V vs. WASM: WASM's portability and web compatibility make it attractive for certain use cases. However, RISC-V's focus on performance and efficiency might be more suitable for the computationally intensive nature of zkEVM proof generation.
 - RISC-V vs. Custom Architectures: Custom architectures can be optimized for specific zkEVM implementations, potentially offering performance advantages. However, they require significant development effort and might lack the community support and tooling available for RISC-V.
 
 **3.7 Projects and Initiatives**
@@ -161,14 +166,15 @@ Several projects and initiatives are exploring the use of RISC-V for zkEVMs:
 
 While RISC-V offers numerous advantages, some drawbacks and challenges need to be considered:
 
-- **Performance Bottlenecks**: Although RISC-V is generally efficient, certain instructions or operations may still present performance bottlenecks in zkEVM implementations. Developers need to carefully optimize their code and consider using specialized hardware or accelerators to mitigate these bottlenecks1.
-- **Compiler Bugs**: Compilers can introduce bugs where the generated RISC-V assembly code does not accurately reflect the original high-level code. These bugs can affect the correctness and security of zkEVMs. Thorough testing and formal verification methods are crucial to identify and address these bugs1.
-- **Benchmarking Challenges**: Comparing the performance of different zkVM implementations, especially those using different ISAs, can be challenging due to the lack of standardized benchmarks. This makes it difficult to objectively assess the performance advantages of RISC-V compared to other architectures11.
-- **Potential for Performance Limitations**: As an open standard, RISC-V might not always have the same level of performance optimization as proprietary architectures like x86 or ARM, which are often tailored for specific use cases. This could potentially affect the efficiency of zkEVM implementations, particularly for computationally intensive operations. However, the flexibility and customizability of RISC-V allow developers to implement optimizations and extensions to address these limitations12.
+- **Performance Bottlenecks**: Although RISC-V is generally efficient, certain instructions or operations may still present performance bottlenecks in zkEVM implementations. Developers need to carefully optimize their code and consider using specialized hardware or accelerators to mitigate these bottlenecks.
+- **Compiler Bugs**: Compilers can introduce bugs where the generated RISC-V assembly code does not accurately reflect the original high-level code. These bugs can affect the correctness and security of zkEVMs. Thorough testing and formal verification methods are crucial to identify and address these bugs.
+- **Benchmarking Challenges**: Comparing the performance of different zkVM implementations, especially those using different ISAs, can be challenging due to the lack of standardized benchmarks. This makes it difficult to objectively assess the performance advantages of RISC-V compared to other architectures.
+- **Potential for Performance Limitations**: As an open standard, RISC-V might not always have the same level of performance optimization as proprietary architectures like x86 or ARM, which are often tailored for specific use cases. This could potentially affect the efficiency of zkEVM implementations, particularly for computationally intensive operations. However, the flexibility and customizability of RISC-V allow developers to implement optimizations and extensions to address these limitations.
 
 While RISC-V presents a strong case, it's crucial to acknowledge its limitations and explore alternative architectures that might offer different advantages.
 
 RISC-V is as a strong contender for the best target architecture for zkEVMs due to several key advantages. Its open-source nature fosters a collaborative environment, encouraging innovation and community-driven development. The modular design allows for customization and optimization, while compatibility with existing languages like Rust enables developers to leverage their skills and reuse code, accelerating development. The growing ecosystem and toolchain support further contribute to the accessibility and rapid adoption of RISC-V-based zkEVMs.
+
 While potential performance limitations and compiler bugs need to be addressed, the benefits of RISC-V for Ethereum and crypto use cases are significant. Its efficiency can improve scalability, reduce costs, and enhance security for zkEVM implementations. Compared to alternative architectures like MIPS, WASM, and custom architectures, RISC-V strikes a balance between performance, flexibility, and community support, making it a compelling choice for zkEVM development.
 
 To conclude - it's likely that Ethereum infrastructure will extensively use zkVMs, especially in the execution layer. Hardware acceleration using custom extentions on RISC-V virtual machines and, indeed, chips are the likely way this will be achieved. This entire field is especially being driven by Layer 2's, who stand to gain by massively reducing blob cost by commiting ZK proofs instead of entire blocks to L1. Solutions like SP1 are already becoming viable and demonstrating significant performance gains - and numerous competitors are snapping at their heels. 
@@ -196,13 +202,13 @@ As discussed above in the Programmable Cryptography section, the idea is to take
 - ...and outputs a Receipt - which consists of the results of your execution and a proof 
 - This receipt can be used by anybody to verify that this was a valid execution of the original guest code
 
-So a zkVM takes some guest code as an input, and produces the results along with a  verifiably proof of the validity of those results. 
+So a zkVM takes some guest code as an input, and produces the results along with a  verifiable proof of the validity of those results. 
 
 Now that we know how a zkVM application works, let's get started.
 
 **Docker**
 
-RISC Zero requires some specific libraries to work (like libssl.so.1.1), so let's work in Docker to make sure everything works out of the box, and we can focus on getting familiar with RISC and zkVMz. If you haven't already, [install Docker](https://docs.docker.com/engine/install/), pull the [Ubuntu:20.04 image](https://hub.docker.com/layers/library/ubuntu/20.04/images/sha256-e5a6aeef391a8a9bdaee3de6b28f393837c479d8217324a2340b64e45a81e0ef), run, and enter it:
+RISC Zero requires some specific libraries to work (like libssl.so.1.1), so let's work in Docker to make sure everything works out of the box, and we can focus on getting familiar with RISC and zkVMs. If you haven't already, [install Docker](https://docs.docker.com/engine/install/), pull the [Ubuntu:20.04 image](https://hub.docker.com/layers/library/ubuntu/20.04/images/sha256-e5a6aeef391a8a9bdaee3de6b28f393837c479d8217324a2340b64e45a81e0ef), run, and enter it:
 
 ```bash
 docker pull ubuntu:20.04
@@ -218,7 +224,7 @@ apt install curl build-essential
 
 **Installing Rust and rustup**
 
-If you haven’t installed Rust yet, follow the official instructions:
+If you haven’t installed Rust yet, follow [the official instructions](https://www.rust-lang.org/tools/install):
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -251,7 +257,7 @@ rzup is the RISC Zero toolchain manager, which can be installed with:
 curl -L https://risczero.com/install | bash
 ```
 
-Now install the toolchian and cargo-risczero with:
+Now install the toolchain and cargo-risczero with:
 
 ```bash
 rzup install
@@ -291,7 +297,7 @@ You now have a working template project which looks like this:
 
 **Host and Guest**
 
-As you can see, we have a 'host' and 'guest' folders, which both contain a main.rs file each. The guest code is the code that we want to provably execute, and it currently looks like this:
+As you can see, we have 'host' and 'guest' folders, which both contain a main.rs file each. The guest code is the code that we want to provably execute, and it currently looks like this:
 
 ```rust
 use risc0_zkvm::guest::env;
@@ -313,13 +319,13 @@ This guest code will be executed by the host, which handles the inputs and the f
 
 - We have some guest code which we have knowledge of
 - We want to run this code with our own (private, if necessary) inputs
-- We want to verify that the outputs produced are correct based on the our input, and our knowledge of the guest code
+- We want to verify that the outputs produced are correct based on our input, and our knowledge of the guest code
 
 So the host has to take the guest code and an input, execute it, and return the results and a proof as a receipt. 
 
-So let us now implement a dummy logic in the guest code - let us double the input provided to it by the host:
+So let us now implement some dummy logic in the guest code - let us double the input provided to it by the host:
 
-```rust
+```rust=
 use risc0_zkvm::guest::env;
 
 fn main() {
@@ -335,9 +341,9 @@ fn main() {
     env::commit(&doubled);
 }
 ```
-So whatever input we give the host program, our guest code will double it. Let us look at the host code:
+So whatever input we give the host program, our guest code will double it. Let us look at the host code (line 27):
 
-```rust
+```rust=
 // These constants represent the RISC-V ELF and the image ID generated by risc0-build.
 // The ELF is used for proving and the ID is used for verification.
 use methods::{
@@ -396,9 +402,9 @@ fn main() {
 }
 ```
 
-We can see that the input is currently an arbitrary large number. Let us replace it with 7, and include a print statement to output the result so we can see it:
+We can see that the input is currently an arbitrary large number. Let us replace it with 7 (please make the change on line 27), and include a print statement (after line 55) to output the result so we can see it:
 
-```rust
+```rust=
 // These constants represent the RISC-V ELF and the image ID generated by risc0-build.
 // The ELF is used for proving and the ID is used for verification.
 use methods::{
