@@ -15,6 +15,8 @@ In Part 2, we will dive deeper first with an overview of [the recently launched 
 
 Once we have the lay of the land, we can proceed to lay out the road to real time proving and discuss how RISC-V and especially its extentions can get us there.
 
+*If you're interested in articles like this, consider subscribing to [our Substack, 0xFutures](https://0xfutures.substack.com)*
+
 ---
 
 ### The 'ZK' Schelling point with Ethproofs.org
@@ -547,4 +549,6 @@ Finally, ensuring the correctness of the underlying RISC-V architecture itself v
 
 In conclusion, RISC-V stands out as the natural foundation for a “glue + coprocessor + zkVM” paradigm precisely because it unifies all the qualities necessary for real time proving. By design, modern zkVMs such as the current leader [SP1](https://www.succinct.xyz/) already use RISC-V as their core instruction set, leveraging its openness and flexibility. Because RISC-V is open source, developers can freely add cryptographic extensions—whether it’s specialized big-integer arithmetic, hardware Keccak, or elliptic-curve engines—without the licensing barriers of proprietary architectures. Meanwhile, the RISC-V ecosystem continues to grow and mature, offering a broader support base, toolchains, and commercial-ready solutions. Critically, formal verification work on the RISC-V spec ensures that these hardware-level enhancements remain provably correct, extending end-to-end trust from the software proof to the silicon.
 
-All of these factors help bridge today’s reality—where a single Ethereum block proof might take 15 minutes—toward a future of real-time proving. By accelerating the cryptographic heavy lifting through specialized hardware, offloading structured tasks to “coprocessors,” and relying on a robust open architecture to handle “glue code,” RISC-V paves the way for generating valid zk proofs well within an Ethereum slot, adn the road to real-time proving. 
+All of these factors help bridge today’s reality—where a single Ethereum block proof might take 15 minutes—toward a future of real-time proving. By accelerating the cryptographic heavy lifting through specialized hardware, offloading structured tasks to “coprocessors,” and relying on a robust open architecture to handle “glue code,” RISC-V paves the way for generating valid zk proofs well within an Ethereum slot, and the road to real-time proving. 
+
+*If you're interested in articles like this, consider subscribing to [our Substack, 0xFutures](https://0xfutures.substack.com)*
