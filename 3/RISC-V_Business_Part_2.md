@@ -283,6 +283,8 @@ fn main() {
 }
 ```
 
+If you look at the main function above, you will see the simple state transition function (with multiple dummy steps) in the lines 57 to 90. 
+
 You will also have to update your methods/guest/Cargo.toml:
 
 ```yaml
