@@ -170,7 +170,7 @@ You now have a working template project which looks like this:
 
 #### Implementation
 
-** Guest **
+**Guest**
 
 The 'guest' code is our toy EVM/State Transition Function. To keep things very simple we are not even going to remotely implement a real state transition where we would verify the signature of the sender, account for gas, update the (merkle particia trie) state etc. We will implement this fictional flow:
 
