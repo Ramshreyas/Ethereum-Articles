@@ -71,6 +71,8 @@ We are now going to do this for a criminally simplified Ethereum block and world
 
 First, let's get our zkVM setup.
 
+---
+
 #### RISC0 Setup
 
 As we did in [Part 1](https://hackmd.io/zl82XRhXQYuVB84GEZmBJg), we will first create a docker environment and install the RISC0 zkVM [(skip if you've already done this)](#Implementation):
@@ -163,6 +165,8 @@ You now have a working template project which looks like this:
 |   `-- src
 `-- rust-toolchain.toml
 ```
+
+---
 
 #### Implementation
 
@@ -474,6 +478,8 @@ I generated a proof of valid block execution!
 ```
 
 As we can see Bob has received his 5 ETH from Alice.
+
+---
 
 ### 🍼 Glue and Coprocessor ⚙️
 
