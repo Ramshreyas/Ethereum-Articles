@@ -168,7 +168,7 @@ You now have a working template project which looks like this:
 
 ---
 
-#### Implementation
+### Implementation
 
 **Guest**
 
@@ -291,7 +291,7 @@ If you look at the main function above, you will see the simple state transition
 
 You will also have to update your methods/guest/Cargo.toml:
 
-```yaml
+```toml
 [package]
 name = "hello_guest"
 version = "0.1.0"
@@ -423,7 +423,7 @@ This proof can be verified by any entity to confirm the block was valid.
 
 Also change your host/Cargo.toml to the following:
 
-```yaml
+```toml
 [package]
 name = "host"
 version = "0.1.0"
@@ -443,7 +443,7 @@ bincode = "1.3.3"
 
 Also ensure your Cargo.toml (at the root) looks like this:
 
-```yaml
+```toml
 [workspace]
 resolver = "2"
 members = ["host", "methods"]
