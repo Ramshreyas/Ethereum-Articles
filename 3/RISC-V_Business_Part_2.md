@@ -13,7 +13,7 @@ In [Part 1](https://hackmd.io/zl82XRhXQYuVB84GEZmBJg) of this series, we explore
 
 In Part 2, we will dive deeper first with an overview of [the recently launched ETHProofs.org](https://ethproofs.org), followed by a hands-on demonstration of proving a toy Ethereum 'block' using Risc0's zkEVM implementation. This should give us a sense of all the bits and pieces that go into creating an Ethereum proof. 
 
-Once we have the lay of the land, we can proceed to lay out the road to real time proving and discuss how RISC-V and especially its extentions can get us there.
+Once we have the lay of the land, we can proceed to lay out the road to real time proving and discuss how RISC-V can help get us there.
 
 *If you're interested in articles like this, consider subscribing to [our Substack, 0xFutures](https://0xfutures.substack.com)*
 
