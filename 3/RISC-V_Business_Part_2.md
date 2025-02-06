@@ -533,9 +533,7 @@ First of all, there are many opportunities to slice and dice the (pre-PECTRA) Et
    - If any checks fail, raise “Invalid Block.” Otherwise, return `None` (success).  
    - *Glue* — Control flow for passing/failing blocks.
 
-There are largely two ways to speed up the code in the coprocessor buckets:
-
-Precompiles in Ethereum act like built-in contracts that handle heavy-lift operations in a more optimized way than raw EVM bytecode. For example, cryptographic primitives such as [BLS12-381 curve operations](https://eips.ethereum.org/EIPS/eip-2537) can be invoked via these precompile addresses. At the protocol level, this cuts down on the large number of instructions a normal contract would need to perform these operations. Conceptually, these precompiles are a software-level “coprocessor”—the EVM recognizes them as special addresses that execute native code, returning results at a fraction of the gas cost and time it would otherwise require.
+There are largely two ways to speed up the code in the coprocessor buckets. Precompiles in Ethereum act like built-in contracts that handle heavy-lift operations in a more optimized way than raw EVM bytecode. For example, cryptographic primitives such as [BLS12-381 curve operations](https://eips.ethereum.org/EIPS/eip-2537) can be invoked via these precompile addresses. At the protocol level, this cuts down on the large number of instructions a normal contract would need to perform these operations. Conceptually, these precompiles are a software-level “coprocessor”—the EVM recognizes them as special addresses that execute native code, returning results at a fraction of the gas cost and time it would otherwise require.
 
 Pushing this idea further, one can imagine hardware acceleration of these same precompile tasks—particularly under RISC-V extensions—where specialized instructions handle elliptic-curve arithmetic, large integer math, or hashing at the hardware layer. Instead of funneling big cryptographic workloads through general-purpose CPU instructions, these expansions let you run them on dedicated circuits or co-processors optimized for parallel computation and low-latency arithmetic. 
 
