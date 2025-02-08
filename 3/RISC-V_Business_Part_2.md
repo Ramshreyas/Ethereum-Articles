@@ -45,7 +45,7 @@ These are the performance figures for each prover on block 21728900. As we can s
 
 [Ethproofs.org](https://ethprooks.org) is therefore an amazing public good that is creating a schelling point around the performance proving of zkEVMs. Companies like Succinct, Snarkify and ZKM stand to gain tremendously by topping this leaderboard, and the competition is just heating up - moving the entire space of zk proving forward in true Ethereum fashion.
 
-So the race to achieve real-time proving is off to a great start. And clearly, proving is not commoditized yet, with zkVM companies already developing their own optimizations and accelration technologies to keep pushing the performance frontier. But what exactly are they doing? How does one get from the current state of the art to real-time proving?
+So the race to achieve real-time proving is off to a great start. And clearly, proving is not commoditized yet, with zkVM companies already developing their own optimizations and acceleration technologies to keep pushing the performance frontier. But what exactly are they doing? How does one get from the current state of the art to real-time proving?
 
 To get a better sense of that, let's dissect an Ethereum State Transition (Execution Layer only), and look at how a proof is generated for a valid transition.
 
