@@ -72,7 +72,7 @@ To get a better sense of that, let's dissect an Ethereum State Transition (Execu
 
 *[Diagram from 'Glue and coprocessor architectures'](https://vitalik.eth.limo/images/gluecp/BJdoaxqo0.png)*
 
-As discussed in [Part 1](https://hackmd.io/zl82XRhXQYuVB84GEZmBJg) we have the rising paradigm of glue (complex, but not computationally expensive) code that calls (highly structured, but computationally incredibly) expensive coprocessor code that can be run in a more optimized environment.
+As discussed in [Part 1](https://hackmd.io/zl82XRhXQYuVB84GEZmBJg) we have the rising paradigm of (complex, but not computationally expensive) glue code that calls (highly structured, but computationally expensive) coprocessor code that can be run in a more optimized environment.
 
 **Let's slice and dice the (pre-PECTRA) Ethereum State Transition Function (STF) into glue and coprocessor buckets:** 
 
