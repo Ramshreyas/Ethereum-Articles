@@ -55,7 +55,7 @@ To get a better sense of that, let's dissect an Ethereum State Transition (Execu
 
 ![zkEVMs](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F80d2ba52-e0eb-4864-9603-a53e69a49dcc%2Fa54c7c60-f729-4c36-921c-29cb07ea8b27%2F1_(1).png?table=block&id=5aeb1325-0fa7-4865-930a-9a2592330e41&cache=v2)
 
-[From risc0's blog - Desiging High-performance zkVMs](https://risczero.com/blog/designing-high-performance-zkVMs)
+[From risc0's blog - Designing High-performance zkVMs](https://risczero.com/blog/designing-high-performance-zkVMs)
 
 **First,** let's back up a bit and review what we learnt in [Part 1](https://hackmd.io/zl82XRhXQYuVB84GEZmBJg). In this paradigm, we pass 'guest' code and inputs into a 'host' (the zkVM above), which then executes and produces the results along with a proof of the validity of said execution. So in the Ethereum context: 
 
