@@ -43,7 +43,7 @@ To understand this better, let us identify a block with almost complete gas limi
 
 These are the performance figures for each prover on block 21728900. As we can see, Succinct was the fastest at ~15 mins, and also the cheapest at ~7 cents an hour. Of course we must remember these are just unoptimized single-aws-instance deployments that are meant for comparisons - provers in production can use many kinds of optimizations and accelerations to deliver much faster proving times. The purpose of this is to establish the performance of 'raw' software, without any other confounders. As you can see in the last column of the table, we can also download the proof of the validity of the block and verify it.
 
-[Ethproofs.org](https://ethprooks.org) is a public good creating a schelling point around the performance proving of zkEVMs. Companies like Succinct, Snarkify and ZKM stand to gain tremendously by topping this leaderboard, and the competition is just heating up - moving the entire space of zk proving forward in true Ethereum fashion.
+[Ethproofs.org](https://ethprooks.org) is a public good creating a Schelling point around the performance proving of zkEVMs. Companies like Succinct, Snarkify and ZKM stand to gain tremendously by topping this leaderboard, and the competition is just heating up - moving the entire space of zk proving forward in true Ethereum fashion.
 
 So the race to achieve real-time proving is off to a great start. And clearly, proving is not commoditized yet, with zkVM companies already developing their own optimizations and acceleration technologies to keep pushing the performance frontier. But what exactly are they doing? How does one get from the current state of the art to real-time proving?
 
