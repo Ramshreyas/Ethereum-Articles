@@ -66,7 +66,7 @@ To get a better sense of that, let's dissect an Ethereum State Transition (Execu
 
 **Second,** let us remember:
 
-### 🍼 Glue and Coprocessor ⚙️
+### 🍼 Glue and Coprocessor Architectures ⚙️
 
 ![Glue and Coprocessor](https://vitalik.eth.limo/images/gluecp/BJdoaxqo0.png)
 
