@@ -11,7 +11,7 @@ author: Ramshreyas Rao
 
 In [Part 1](https://hackmd.io/zl82XRhXQYuVB84GEZmBJg) of this series, we explored at a high level how the adoption of RISC-V as an open standard is likely to be the foundation on which the [programmable cryptography](https://0xparc.org/blog/programmable-cryptography-1) future of Ethereum will be built, using [Glue and Coprocessor architectures](https://vitalik.eth.limo/images/gluecp/BJdoaxqo0.png). We then used Risc0's VM to 'host' a simple piece of external code, executed it, and then produced a proof that it was executed correctly, to get a concrete, albeit simple caricature of this paradigm.
 
-In Part 2, we will dive deeper first with an overview of [the recently launched ETHProofs.org](https://ethproofs.org), followed by an in depth examination of how we can achieve this in the execution layer by looking at the anatomy of an Ethereum State Transition, identifying which steps can be 'coprocessed', and finally addressing how the proving of the entire execution trace can itself be sped up.
+In Part 2, we will dive deeper first with an overview of [the recently launched ETHProofs.org](https://ethproofs.org), followed by an in depth examination of how we can achieve real-time proving in the execution layer by looking at the anatomy of an Ethereum State Transition, identifying which steps can be 'coprocessed', and finally addressing how the proving of the entire execution trace can itself be sped up.
 
 Once we have the lay of the land, we can proceed to lay out the road to real time proving and discuss how RISC-V can help get us there.
 
